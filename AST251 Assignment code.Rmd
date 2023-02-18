@@ -1,0 +1,111 @@
+---
+title: "AST251"
+output: pdf_document
+date: '2023-02-16'
+---
+
+```{r}
+library(readr)
+library(ggplot2)
+sing1201_c1 <- read_csv("~/Desktop/sing1201_c1.csv")
+sing1201_c2 <- read_csv("~/Desktop/sing1201_c2.csv")
+sing1201_c3 <- read_csv("~/Desktop/sing1201_c3.csv")
+
+
+```
+
+```{r}
+ggplot(sing1201_c1, aes(x=sing1201_c1$`Time (Days)`, y = sing1201_c1$`Brightness (solar luminosities)`)) + geom_line() + geom_errorbar( aes(x=sing1201_c1$`Time (Days)`, ymin=sing1201_c1$`Brightness (solar luminosities)` - sing1201_c1$`Brightness uncertainty (solar luminosities)`, ymax=sing1201_c1$`Brightness (solar luminosities)` + sing1201_c1$`Brightness uncertainty (solar luminosities)`), width=0.1, colour="blue", alpha=0.9, size=1) 
+```
+
+
+```{r}
+ggplot(sing1201_c1, aes(x=sing1201_c1$`Time (Days)`, y = sing1201_c1$`Brightness (solar luminosities)`)) + geom_line() + geom_errorbar( aes(x=sing1201_c1$`Time (Days)`, ymin=sing1201_c1$`Brightness (solar luminosities)` - sing1201_c1$`Brightness uncertainty (solar luminosities)`, ymax=sing1201_c1$`Brightness (solar luminosities)` + sing1201_c1$`Brightness uncertainty (solar luminosities)`), width=0.1, colour="blue", alpha=0.9, size=1) + ggtitle("C1 Graph") + labs(x= "Time (Days)", y = "Luminosity (L/L0)")
+ggsave("plotc1.png")
+ggplot(sing1201_c2, aes(x=sing1201_c2$`Time (Days)`, y = sing1201_c2$`Brightness (solar luminosities)`)) + geom_line() + geom_errorbar( aes(x=sing1201_c2$`Time (Days)`, ymin=sing1201_c2$`Brightness (solar luminosities)` - sing1201_c2$`Brightness uncertainty (solar luminosities)`, ymax=sing1201_c2$`Brightness (solar luminosities)` + sing1201_c2$`Brightness uncertainty (solar luminosities)`), width=0.1, colour="blue", alpha=0.9, size=1) + ggtitle("C2 Graph") + labs(x= "Time (Days)", y = "Luminosity (L/L0)")
+ggplot(sing1201_c3, aes(x=sing1201_c3$`Time (Days)`, y = sing1201_c3$`Brightness (solar luminosities)`)) + geom_line() + geom_errorbar( aes(x=sing1201_c3$`Time (Days)`, ymin=sing1201_c3$`Brightness (solar luminosities)` - sing1201_c3$`Brightness uncertainty (solar luminosities)`, ymax=sing1201_c3$`Brightness (solar luminosities)` + sing1201_c3$`Brightness uncertainty (solar luminosities)`), width=0.1, colour="blue", alpha=0.9, size=1) + ggtitle("C3 Graph") + labs(x= "Time (Days)", y = "Luminosity (L/L0)")
+ggsave("plotc2.png")
+
+
+```
+
+```{r}
+ggplot(sing1201_c1, aes(x=sing1201_c1$`Time (Days)`, y = sing1201_c1$`Brightness (solar luminosities)`)) + geom_line()
+plot(sing1201_c1$`Time (Days)`,sing1201_c1$`Brightness (solar luminosities)`, type = "l", xlim = c(5244,5255), xlab = "Time (Days)", ylab = "Luminosity (L/L0)")
+#Min point is 15.90746374 at 5249.17028
+plot(sing1201_c1$`Time (Days)`,sing1201_c1$`Brightness (solar luminosities)`, type = "l", xlim = c(12155,12170))
+#Min point is 15.90772446 at 12161.48193
+plot(sing1201_c1$`Time (Days)`,sing1201_c1$`Brightness (solar luminosities)`, type = "l", xlim = c(19050,19350))
+#Min at 15.9082099 at 19073.73356 
+plot(sing1201_c1$`Time (Days)`,sing1201_c1$`Brightness (solar luminosities)`, type = "l", xlim = c(25980,25986.29))
+#Min at 15.90865072 at 25986.05572
+c1d1<- sing1201_c1[339:363,2]
+dip1 <-min(sing1201_c1[363:418,2])
+c1d2<- sing1201_c1[883:909,2]
+dip2<-min(sing1201_c1[883:962,2])
+c1d3<- sing1201_c1[1300:1306,2]
+dip3<-min(sing1201_c1[1306:1390,2])
+c1d4<- sing1201_c1[2570:2583,2]
+dip4<-min(sing1201_c1[2570:2649,2])
+
+```
+
+
+
+```{r}
+c1_timedips<- c(5249.17028,12161.48193,19073.73356,25986.05572)
+c1_timedips[2]-c1_timedips[1]
+c1_timedips[3]-c1_timedips[2]
+c1_timedips[4]-c1_timedips[3]
+(mean(c1d1$`Brightness (solar luminosities)`) - dip1)/ mean(c1d1$`Brightness (solar luminosities)`)
+(mean(c1d2$`Brightness (solar luminosities)`) - dip2)/ mean(c1d2$`Brightness (solar luminosities)`)
+(mean(c1d3$`Brightness (solar luminosities)`) - dip3)/ mean(c1d3$`Brightness (solar luminosities)`)
+(mean(c1d4$`Brightness (solar luminosities)`) - dip4)/ mean(c1d4$`Brightness (solar luminosities)`)
+1.789 *(sqrt((mean(c1d1$`Brightness (solar luminosities)`) - dip1)/ mean(c1d1$`Brightness (solar luminosities)`)))
+1.789 *(sqrt((mean(c1d2$`Brightness (solar luminosities)`) - dip2)/ mean(c1d2$`Brightness (solar luminosities)`)))
+1.789 *(sqrt((mean(c1d3$`Brightness (solar luminosities)`) - dip3)/ mean(c1d3$`Brightness (solar luminosities)`)))
+1.789 *(sqrt((mean(c1d4$`Brightness (solar luminosities)`) - dip4)/ mean(c1d4$`Brightness (solar luminosities)`)))
+
+
+```
+
+
+
+
+```{r}
+ggplot(sing1201_c3, aes(x=sing1201_c3$`Time (Days)`, y = sing1201_c3$`Brightness (solar luminosities)`)) + geom_line()
+plot(sing1201_c3$`Time (Days)`,sing1201_c3$`Brightness (solar luminosities)`, type = "l", xlim = c(2225,2230), xlab = "Time (Days)", ylab = "Luminosity (L/L0)")
+plot(sing1201_c3$`Time (Days)`,sing1201_c3$`Brightness (solar luminosities)`, type = "l", xlim = c(5050,5100))
+plot(sing1201_c3$`Time (Days)`,sing1201_c3$`Brightness (solar luminosities)`, type = "l", xlim = c(7893,7897))
+plot(sing1201_c3$`Time (Days)`,sing1201_c3$`Brightness (solar luminosities)`, type = "l", xlim = c(10725,10729.21))
+
+c3d1<- sing1201_c3[97:115,2] 
+c3d2<- sing1201_c3[637:652,2]
+c3d3<- sing1201_c3[1419:1442,2]
+c3d4<- sing1201_c3[2077:2093,2]
+dip5<-min(sing1201_c3[115:148,2]) # at time 2227.756
+dip6<-min(sing1201_c3[652:718,2]) # at time 5061.46
+dip7<-min(sing1201_c3[1442:1487,2]) # at time 7895.294
+dip8<-min(sing1201_c3[2093:2157,2]) # at time 10728.93
+
+c3_timedips<- c(2227.756,5061.46,7895.294,10728.93)
+c3_timedips[2]-c3_timedips[1]
+c3_timedips[3]-c3_timedips[2]
+c3_timedips[4]-c3_timedips[3]
+
+(mean(c3d1$`Brightness (solar luminosities)`) - dip5)/mean(c3d1$`Brightness (solar luminosities)`)
+(mean(c3d2$`Brightness (solar luminosities)`) - dip6)/mean(c3d2$`Brightness (solar luminosities)`)
+(mean(c3d3$`Brightness (solar luminosities)`) - dip7)/mean(c3d3$`Brightness (solar luminosities)`)
+(mean(c3d4$`Brightness (solar luminosities)`) - dip8)/mean(c3d4$`Brightness (solar luminosities)`)
+
+1.191*(sqrt((mean(c3d1$`Brightness (solar luminosities)`) - dip5)/mean(c3d1$`Brightness (solar luminosities)`)))
+1.191*(sqrt((mean(c3d2$`Brightness (solar luminosities)`) - dip6)/mean(c3d2$`Brightness (solar luminosities)`)))
+1.191*(sqrt((mean(c3d3$`Brightness (solar luminosities)`) - dip7)/mean(c3d3$`Brightness (solar luminosities)`)))
+1.191*(sqrt((mean(c3d4$`Brightness (solar luminosities)`) - dip8)/mean(c3d4$`Brightness (solar luminosities)`)))
+
+```
+
+
+
+
+

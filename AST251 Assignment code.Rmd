@@ -21,10 +21,8 @@ ggplot(sing1201_c1, aes(x=sing1201_c1$`Time (Days)`, y = sing1201_c1$`Brightness
 
 ```{r}
 ggplot(sing1201_c1, aes(x=sing1201_c1$`Time (Days)`, y = sing1201_c1$`Brightness (solar luminosities)`)) + geom_line() + geom_errorbar( aes(x=sing1201_c1$`Time (Days)`, ymin=sing1201_c1$`Brightness (solar luminosities)` - sing1201_c1$`Brightness uncertainty (solar luminosities)`, ymax=sing1201_c1$`Brightness (solar luminosities)` + sing1201_c1$`Brightness uncertainty (solar luminosities)`), width=0.1, colour="blue", alpha=0.9, size=1) + ggtitle("C1 Graph") + labs(x= "Time (Days)", y = "Luminosity (L/L0)")
-ggsave("plotc1.png")
 ggplot(sing1201_c2, aes(x=sing1201_c2$`Time (Days)`, y = sing1201_c2$`Brightness (solar luminosities)`)) + geom_line() + geom_errorbar( aes(x=sing1201_c2$`Time (Days)`, ymin=sing1201_c2$`Brightness (solar luminosities)` - sing1201_c2$`Brightness uncertainty (solar luminosities)`, ymax=sing1201_c2$`Brightness (solar luminosities)` + sing1201_c2$`Brightness uncertainty (solar luminosities)`), width=0.1, colour="blue", alpha=0.9, size=1) + ggtitle("C2 Graph") + labs(x= "Time (Days)", y = "Luminosity (L/L0)")
 ggplot(sing1201_c3, aes(x=sing1201_c3$`Time (Days)`, y = sing1201_c3$`Brightness (solar luminosities)`)) + geom_line() + geom_errorbar( aes(x=sing1201_c3$`Time (Days)`, ymin=sing1201_c3$`Brightness (solar luminosities)` - sing1201_c3$`Brightness uncertainty (solar luminosities)`, ymax=sing1201_c3$`Brightness (solar luminosities)` + sing1201_c3$`Brightness uncertainty (solar luminosities)`), width=0.1, colour="blue", alpha=0.9, size=1) + ggtitle("C3 Graph") + labs(x= "Time (Days)", y = "Luminosity (L/L0)")
-ggsave("plotc2.png")
 
 
 ```
